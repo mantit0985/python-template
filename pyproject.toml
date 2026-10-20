@@ -1,0 +1,52 @@
+[project]
+name = "python-template"
+version = "0.1.0"
+description = "Professional Python service template"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "prometheus-client",
+    "fastapi",
+    "pydantic",
+    "pydantic-settings",
+    "slowapi>=0.1.10",
+    "structlog>=26.1.0",
+    "uvicorn[standard]",
+    "prometheus-client",
+    "pytest",
+    "pytest-asyncio>=1.4.0",
+    "httpx",
+    "testcontainers",
+    "msgpack==1.2.1",
+    "setuptools==78.1.1",
+    "urllib3==2.8.0",
+    "jaraco.context==6.1.0",
+    "wheel==0.46.2",
+]
+
+[dependency-groups]
+dev = [
+    "ruff",
+    "pyright",
+    "pytest-asyncio>=1.4.0",
+    "httpx>=0.28.1",
+    "testcontainers>=4.15.0",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
