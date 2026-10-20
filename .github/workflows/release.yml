@@ -1,0 +1,16 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: true
+        type: string
+permissions:
+  contents: write
+  actions: read
+jobs:
+  release:
+    secrets: inherit
+    uses: mantit0985/.github/.github/workflows/release.yml@main
+    with:
+      tag: ${{ inputs.tag }}
